@@ -1,0 +1,13 @@
+.erorr {
+  background-color: white;
+  padding-top: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__image {
+    width: 600px;
+    height: 400px;
+  }
+}

@@ -1,0 +1,20 @@
+@import "@/styles/colors.scss";
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: map-get($schema, primary);
+}
+
+.button {
+  border: 1px solid rgb(23, 23, 118);
+  color: white;
+  background: rgb(23, 23, 118);
+  padding: 4px 12px;
+  border-radius: 4px;
+}
