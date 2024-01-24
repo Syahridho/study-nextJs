@@ -1,7 +1,7 @@
-import { fetcher } from "@/lib/swr/fetcher";
+// import { fetcher } from "@/lib/swr/fetcher";
 import DetailProduct from "@/views/DetailProduct";
 import { useRouter } from "next/router";
-import useSWR from "swr";
+// import useSWR from "swr";
 import { ProductType } from "../types/Product.type";
 
 const DetailProductPage = ({ product }: { product: ProductType }) => {
@@ -49,6 +49,7 @@ export async function getStaticPaths() {
     params: {
       product: product.id,
     },
+    revalidate: 10,
   }));
 
   return { paths, fallback: false };
@@ -56,7 +57,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: string }) {
   // fetch data
-  const res = await fetch(`http://localhost:3000/api/product/${params}`);
+  const res = await fetch(
+    `http://localhost:3000/api/product/${params.product}`
+  );
   const response = await res.json();
 
   return {
