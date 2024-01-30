@@ -1,7 +1,9 @@
 const AboutPage = () => {
   return (
     <div>
-      <h1>Aboout page</h1>
+      <h1 id="title" data-testid="title">
+        About page
+      </h1>
     </div>
   );
 };

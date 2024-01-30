@@ -1,4 +1,4 @@
-import { ProductType } from "@/pages/types/Product.type";
+import { ProductType } from "@/types/Product.type";
 import styles from "./DetailProduct.module.scss";
 
 const DetailProduct = ({ product }: { product: ProductType }) => {

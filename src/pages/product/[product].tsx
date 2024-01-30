@@ -2,7 +2,7 @@
 import DetailProduct from "@/views/DetailProduct";
 import { useRouter } from "next/router";
 // import useSWR from "swr";
-import { ProductType } from "../types/Product.type";
+import { ProductType } from "../../types/Product.type";
 
 const DetailProductPage = ({ product }: { product: ProductType }) => {
   const { query } = useRouter();

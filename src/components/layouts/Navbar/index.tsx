@@ -1,13 +1,26 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import styles from "./Navbar.module.css";
+import Image from "next/image";
+import Script from "next/script";
 
 const Navbar = () => {
   const { data }: any = useSession();
-  console.log(data);
   return (
     <div className={styles.navbar}>
-      <h1 className="big">Navbar</h1>
-      <div>
+      <h1 className="big" id="title"></h1>
+      <Script id="script-title" strategy="lazyOnload">
+        {`document.getElementById('title').innerHTML = 'Navbar'`}
+      </Script>
+      <div className="flex items-center">
+        {data?.user?.image ? (
+          <Image
+            className="w-8 h-8 rounded-full me-2"
+            src={data.user.image}
+            alt={data.user.fullname}
+            width={100}
+            height={100}
+          />
+        ) : null}
         {data && data.user.fullname}
         {data ? (
           <button

@@ -75,7 +75,7 @@ const RegisterView = () => {
       </div>
       <p className="mt-8">
         Have an account?{" "}
-        <Link href={"/auth/register"} className="underline">
+        <Link href={"/auth/login"} className="underline">
           Sign in here
         </Link>
       </p>
