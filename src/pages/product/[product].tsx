@@ -25,42 +25,13 @@ const DetailProductPage = ({ product }: { product: ProductType }) => {
 export default DetailProductPage;
 
 // server Side
-// export async function getServerSideProps({ params }: { params: string }) {
-//   // fetch data
-//   const res = await fetch(
-//     `http://localhost:3000/api/product/${params.product}`
-//   );
-//   const response = await res.json();
-//   console.log(response);
-
-//   return {
-//     props: {
-//       product: response.data,
-//     },
-//   };
-// }
-
-// Static
-export async function getStaticPaths() {
-  const res = await fetch("http://localhost:3000/api/product");
-  const response = await res.json();
-
-  const paths = response.data.map((product: ProductType) => ({
-    params: {
-      product: product.id,
-    },
-    revalidate: 10,
-  }));
-
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }: { params: string }) {
+export async function getServerSideProps({ params }: { params: string }) {
   // fetch data
   const res = await fetch(
-    `http://localhost:3000/api/product/${params.product}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/product/${params.product}`
   );
   const response = await res.json();
+  console.log(response);
 
   return {
     props: {
@@ -68,3 +39,32 @@ export async function getStaticProps({ params }: { params: string }) {
     },
   };
 }
+
+// Static
+// export async function getStaticPaths() {
+//   const res = await fetch("http://localhost:3000/api/product");
+//   const response = await res.json();
+
+//   const paths = response.data.map((product: ProductType) => ({
+//     params: {
+//       product: product.id,
+//     },
+//     revalidate: 10,
+//   }));
+
+//   return { paths, fallback: false };
+// }
+
+// export async function getStaticProps({ params }: { params: string }) {
+//   // fetch data
+//   const res = await fetch(
+//     `http://localhost:3000/api/product/${params.product}`
+//   );
+//   const response = await res.json();
+
+//   return {
+//     props: {
+//       product: response.data,
+//     },
+//   };
+// }
